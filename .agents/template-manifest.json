@@ -6,12 +6,12 @@
     {
       "path": ".agents/AGENT_PROMPT.md",
       "owner": "template-owned",
-      "sha256": "623e229a8838d4f025d7fa683958b6f8fc2e52656aa1def42f6612d1030b8e3c"
+      "sha256": "721365beeaa0350e4359bae90e16470aafec7d3709a0b21b23d097e9280125f5"
     },
     {
       "path": ".agents/README.md",
       "owner": "template-owned",
-      "sha256": "29ca7dd5d6c12152e561645650611fed7394ab3b1a8c0a802c47bbec558e52ef"
+      "sha256": "93357ccf523ccf861c7514703fcd19e7b797d9b6bc7b5092a462b50298473457"
     },
     {
       "path": ".agents/bin/spec_validate.py",
@@ -61,7 +61,7 @@
     {
       "path": ".agents/examples/history/README.md",
       "owner": "template-owned",
-      "sha256": "e7b2e1285a8e0c9022f1552861eb82fd3731daa3b5a3eb580d11bb08ff23054d"
+      "sha256": "e43e7a9ffcf981585947eb61129691a9277519f1a4d05772b0fed1abb4ec5d6e"
     },
     {
       "path": ".agents/examples/spec-state.awaiting-approval.example.json",
@@ -246,7 +246,7 @@
     {
       "path": ".agents/tests/test_repo_contract.py",
       "owner": "template-owned",
-      "sha256": "b7b8594ae765a26d64db8eae74b1f3bb81c785e9034c17f11778cfaba9cf3c50"
+      "sha256": "89026941f3d525ec31f59e9f07ab431f077977093c699da7bc86a1becbe2d6ce"
     },
     {
       "path": ".agents/tests/test_spec_validate.py",
@@ -306,7 +306,7 @@
     {
       "path": "README.md",
       "owner": "project-owned",
-      "sha256": "a0afa4cfe06b575c62de11f9f425809a6b54a89e3284ebe6ff068dd14f341e08"
+      "sha256": "bc84c8edbcf43a5a9cac717d01db9315103d3ea96d165841d770783421fdb365"
     },
     {
       "path": "speckit",

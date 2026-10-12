@@ -48,16 +48,13 @@ class DistributionLayoutTestCase(unittest.TestCase):
             ["README.md"],
         )
 
-    def test_history_index_covers_seed_specs(self):
+    def test_history_index_covers_template_specs(self):
         history = (ROOT / ".agents" / "examples" / "history" / "README.md").read_text(
             encoding="utf-8",
         )
-        entries = re.findall(
-            r"^## (00[1-8]-[^\n]+).*?/commit/([0-9a-f]{40})\)\.$", history,
-            flags=re.MULTILINE | re.DOTALL,
-        )
-        self.assertEqual([name[:3] for name, _commit in entries], [f"{number:03d}" for number in range(1, 9)])
-        self.assertEqual(len({commit for _name, commit in entries}), 8)
+        entries = re.findall(r"^## (00[1-8]-[^\n]+)$", history, flags=re.MULTILINE)
+        self.assertEqual([name[:3] for name in entries], [f"{number:03d}" for number in range(1, 9)])
+        self.assertNotIn("github.com/", history)
 
 
 class TemplateOwnershipTestCase(unittest.TestCase):

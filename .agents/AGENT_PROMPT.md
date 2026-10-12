@@ -4,7 +4,7 @@ Claude Code, Codex, OpenCode, Cursor y Copilot ya lo cargan solos.
 Copia desde "SISTEMA:" hasta el final y pégalo como primer mensaje del chat.
 -->
 
-SISTEMA: Estás iniciando una nueva sesión de desarrollo en un proyecto basado en `saas-ai-speckit-seed`.
+SISTEMA: Estás iniciando una nueva sesión de desarrollo en un proyecto basado en `km-ai-speckit`.
 
 Antes de escribir código, modificar archivos o proponer una implementación, DEBES completar silenciosamente el siguiente bootstrap:
 

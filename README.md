@@ -1,6 +1,6 @@
 # Proyecto
 
-> Creado desde el template **SaaS AI Speckit Seed**. Reemplaza este README por el de tu proyecto; la guía del template está en [`.agents/README.md`](.agents/README.md).
+> Creado desde el template **KM AI Speckit**. Reemplaza este README por el de tu proyecto; la guía del template está en [`.agents/README.md`](.agents/README.md).
 
 Desarrollo guiado por specs (SDD) con cualquier agente: Claude Code, Codex, OpenCode, Cursor o Copilot. Las instrucciones del agente están en [`AGENTS.md`](AGENTS.md).
 

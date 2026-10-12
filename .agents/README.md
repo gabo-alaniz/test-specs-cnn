@@ -1,4 +1,4 @@
-# 🚀 SaaS AI Speckit Seed
+# 🚀 KM AI Speckit
 
 Repositorio **template** para trabajar con agentes de IA bajo **Spec-Driven Development (SDD)**. Clonas, y cualquier agente (Claude Code, Codex, OpenCode, Cursor, Copilot…) ya trae las reglas, el contrato de estado y los gates: sin configurar reglas, condicionales ni contratos en cada proyecto.
 
@@ -151,11 +151,11 @@ Soporta Python 3.9–3.13. Las dependencias de desarrollo están fijadas en `.ag
 
 ## 🔄 Actualizar el template
 
-Obtén una copia local de la nueva versión del seed y previsualiza primero:
+Obtén una copia local de la nueva versión del template y previsualiza primero:
 
 ```bash
-./speckit update ../saas-ai-speckit-seed-nuevo
-./speckit update ../saas-ai-speckit-seed-nuevo --apply
+./speckit update ../km-ai-speckit-nuevo
+./speckit update ../km-ai-speckit-nuevo --apply
 ```
 
 `.agents/template-manifest.json` enumera todos los archivos núcleo. El updater solo toca entradas `template-owned`; `project-owned` (`project.json`, README, `.gitignore`, `.env.example`) se conserva. Un archivo del template que cambió respecto a su hash aparece como `conflict`; revísalo y confirma explícitamente con `--apply --yes`. Antes de escribir se crea un backup local en `.agents/backups/`, que no se borra automáticamente. Para revertir:
