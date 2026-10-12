@@ -1,0 +1,186 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SDD Spec State",
+  "type": "object",
+  "additionalProperties": false,
+  "definitions": {
+    "approval": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "at": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}"
+        },
+        "design_hashes": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "spec_md": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "implementation_plan_md": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": ["spec_md"]
+        }
+      },
+      "required": [
+        "by",
+        "at",
+        "design_hashes"
+      ]
+    },
+    "lifecycle_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event": {
+          "type": "string",
+          "enum": [
+            "created",
+            "design_ready",
+            "design_revised",
+            "approved",
+            "ready",
+            "task_started",
+            "task_passed",
+            "task_failed",
+            "blocked",
+            "resumed",
+            "closed"
+          ]
+        },
+        "at": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+        },
+        "task": {
+          "type": ["string", "null"],
+          "pattern": "^TASK-[0-9]{3,}$"
+        },
+        "actor": {
+          "type": ["string", "null"]
+        },
+        "reason": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": ["event", "at", "task", "actor", "reason"]
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "enum": [3]
+    },
+    "created_at": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/lifecycle_event"
+      }
+    },
+    "spec_name": {
+      "type": "string",
+      "pattern": "^[0-9]{3,}-[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "size": {
+      "type": "string",
+      "enum": [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "awaiting_approval",
+        "ready",
+        "in_progress",
+        "blocked",
+        "completed"
+      ]
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "spec",
+        "plan",
+        "tasks",
+        "test_plan",
+        "ready",
+        "implementation",
+        "validation"
+      ]
+    },
+    "current_task": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^TASK-[0-9]{3,}$"
+    },
+    "blocked_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approval": {
+      "$ref": "#/definitions/approval"
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "spec_md": {
+          "type": "boolean"
+        },
+        "implementation_plan_md": {
+          "type": "boolean"
+        },
+        "tasks_md": {
+          "type": "boolean"
+        },
+        "test_plan_md": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "spec_md",
+        "implementation_plan_md",
+        "tasks_md",
+        "test_plan_md"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "created_at",
+    "events",
+    "spec_name",
+    "size",
+    "status",
+    "phase",
+    "current_task",
+    "blocked_reason",
+    "approval",
+    "artifacts"
+  ]
+}

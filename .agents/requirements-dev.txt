@@ -1,0 +1,8 @@
+# Lock reproducible compatible con Python 3.9-3.13.
+# Sin jsonschema, spec_validate.py conserva su fallback de stdlib.
+attrs==24.2.0
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
+referencing==0.35.1
+rpds-py==0.20.1
+typing-extensions==4.12.2

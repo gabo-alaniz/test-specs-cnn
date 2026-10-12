@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Speckit CLI — punto de entrada único para cualquier agente o humano.
+#
+#   ./speckit new <slug> [--size S|M]       crea specs/NNN-<slug>/ (--from-issue <md>)
+#   ./speckit status [<spec>]               estado, tareas y siguiente paso
+#   ./speckit validate <spec-dir>|--all     contrato SDD (schema + gates)
+#   ./speckit design ready <spec>           diseño completo → awaiting_approval
+#   ./speckit design revise <spec> --by x --reason y   invalida aprobación antes de implementar
+#   ./speckit approve <spec> [--by <name>]  GATE 1, solo tras aprobación explícita
+#   ./speckit ready <spec>                  GATE 2, valida planificación sin iniciar tarea
+#   ./speckit task start|done <spec> TASK-NNN   ejecución / GATE 3 (evidence.md)
+#   ./speckit resume <spec> --by <nombre> --reason <motivo>   autoriza reintento tras bloqueo
+#   ./speckit close <spec> [--base <ref>]   checks globales, fingerprint, completed y retro
+#   ./speckit ci-guard --branch feat/<spec>  valida rama, diff, spec y CLOSE probado
+#   ./speckit handoff [<spec>] [--note ".."]  resumen en .agents/SESSION_STATE.md
+#   ./speckit archive <spec>                mueve un spec completed a specs/.archive/
+#   ./speckit report [--json]               métricas de gates, tareas, FAIL y bloqueos
+#   ./speckit worktree <spec>               git worktree ../<repo>-<spec> en feat/<spec>
+#   ./speckit doctor [--json]               diagnóstico de instalación y configuración
+#   ./speckit update <dir> [--apply --yes]   preview/aplica una actualización recuperable
+#   ./speckit migrate [<spec>] [--check]    migra state.json al schema vigente
+#   ./speckit template export <destino>     genera la proyección limpia para GitHub Template
+#   ./speckit --version                     versión del template y del schema
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PYTHON="$ROOT/.venv/bin/python"
+[ -x "$PYTHON" ] || PYTHON=python3
+
+usage() {
+  sed -n '2,21p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+  exit 1
+}
+
+[ "$#" -ge 1 ] || usage
+command="$1"
+shift
+case "$command" in
+  --version)
+    exec "$PYTHON" "$ROOT/.agents/bin/speckit_cli.py" --version ;;
+  validate)
+    [ "$#" -ge 1 ] || usage
+    exec "$PYTHON" "$ROOT/.agents/bin/spec_validate.py" "$@" ;;
+  new|status|design|approve|ready|task|resume|close|ci-guard|handoff|archive|report|worktree|doctor|update|migrate|template)
+    exec "$PYTHON" "$ROOT/.agents/bin/speckit_cli.py" "$command" "$@" ;;
+  *) usage ;;
+esac

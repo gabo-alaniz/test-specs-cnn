@@ -1,0 +1,82 @@
+# Abre un PR con el borrador de spec (specs/NNN-<slug>/) a partir de un issue con label 'spec'
+# (formulario .github/ISSUE_TEMPLATE/spec.yml). Sin LLM: solo 'speckit new --from-issue'.
+# Requisito: Settings → Actions → General → "Allow GitHub Actions to create and approve pull requests".
+# Los PRs creados con GITHUB_TOKEN no disparan otros workflows, así que se lanza la CI con
+# 'gh workflow run' (workflow_dispatch). Con el secret opcional SPEC_BOT_TOKEN (PAT fine-grained o
+# token de GitHub App con contents + pull-requests: write), el push y el PR disparan la CI como siempre.
+name: spec-from-issue
+
+on:
+  issues:
+    types: [labeled]
+
+permissions: {}
+
+jobs:
+  draft:
+    if: github.event.label.name == 'spec'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    concurrency:
+      group: spec-from-issue-id-allocation
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          token: ${{ secrets.SPEC_BOT_TOKEN || github.token }}
+      - name: Draft spec from the issue form
+        id: draft
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          GH_TOKEN: ${{ secrets.SPEC_BOT_TOKEN || github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          printf '%s\n' "$ISSUE_BODY" > "$RUNNER_TEMP/issue.md"
+          python3 -m venv .venv
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          base_ref="$(git rev-parse HEAD)"
+          pushed=false
+          for attempt in 1 2 3 4 5; do
+            next="$({
+              find specs specs/.archive -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
+                | sed -n 's/^\([0-9][0-9]*\)-.*/\1/p'
+              git ls-remote --heads origin 'refs/heads/feat/[0-9]*-*' \
+                | sed -n 's#.*refs/heads/feat/\([0-9][0-9]*\)-.*#\1#p'
+            } | awk 'BEGIN { max=0 } { if ($1 > max) max=$1 } END { print max + 1 }')"
+            .venv/bin/python .agents/bin/speckit_cli.py new --from-issue "$RUNNER_TEMP/issue.md" --number "$next"
+            spec="$(git ls-files --others --exclude-standard specs | cut -d/ -f2 | sort -u | head -n1)"
+            test -n "$spec"
+            branch="feat/$spec"
+            git switch -c "$branch"
+            git add "specs/$spec"
+            git commit -m "docs(spec): draft $spec from #$ISSUE"
+            if git push -u origin "HEAD:refs/heads/$branch"; then
+              pushed=true
+              break
+            fi
+            echo "::warning::ID $next was reserved concurrently; retry $attempt/5"
+            git switch --detach "$base_ref"
+            git branch -D "$branch"
+          done
+          test "$pushed" = true
+          gh pr create --draft --head "$branch" --title "spec: $spec" \
+            --body "Borrador generado desde el issue. Siguiente paso: \`/sdd-specify\` (una ronda de preguntas, después spec.md).
+
+          Refs #$ISSUE"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          echo "spec=$spec" >> "$GITHUB_OUTPUT"
+      - name: Run CI on the bot branch
+        if: steps.draft.outputs.branch != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HAS_BOT_TOKEN: ${{ secrets.SPEC_BOT_TOKEN != '' }}
+          BRANCH: ${{ steps.draft.outputs.branch }}
+        run: |
+          if [ "$HAS_BOT_TOKEN" = true ]; then
+            echo "::notice::SPEC_BOT_TOKEN set: the push already triggered CI"; exit 0
+          fi
+          gh workflow run ci.yml --ref "$BRANCH"

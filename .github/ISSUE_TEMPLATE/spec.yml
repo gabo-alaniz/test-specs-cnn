@@ -1,0 +1,66 @@
+name: Nueva spec (SDD)
+description: Describe una idea; una Action abre un PR con specs/NNN-<slug>/brief.md listo para especificar.
+title: "spec: "
+labels: [spec]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Equivale a `brief.md`. Lo que no sepas, déjalo como `[NEEDS CLARIFICATION: <pregunta>]`; el agente hará una sola ronda de preguntas.
+  - type: input
+    id: slug
+    attributes:
+      label: Slug
+      description: kebab-case, p. ej. `login-con-email`
+    validations:
+      required: true
+  - type: dropdown
+    id: size
+    attributes:
+      label: Tamaño
+      description: "S: ≤ 3 tareas, sin plan aparte. M: ≤ 8 tareas, con plan y test plan. Si es más grande, divídelo."
+      options: ["M", "S"]
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema
+      description: ¿Qué falla hoy y a quién le afecta? (1-3 frases)
+    validations:
+      required: true
+  - type: textarea
+    id: user
+    attributes:
+      label: Usuario
+      description: Rol, contexto y frecuencia de uso.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Resultado esperado
+      description: ¿Qué cambia cuando esto existe? ¿Qué observable demuestra que funcionó?
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Criterios de aceptación
+      description: Uno por comportamiento observable.
+      value: "- AC-001: Dado <contexto>, cuando <acción>, entonces <resultado observable>."
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Fuera de alcance
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Restricciones
+      description: Stack obligatorio, plazos, rendimiento, seguridad o legales.
+  - type: textarea
+    id: data
+    attributes:
+      label: Datos
+      description: Entidades, origen, volumen y datos sensibles (PII).
+  - type: textarea
+    id: references
+    attributes:
+      label: Referencias
+      description: Mockups, enlaces y specs relacionados.

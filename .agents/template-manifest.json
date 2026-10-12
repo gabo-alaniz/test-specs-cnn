@@ -1,0 +1,317 @@
+{
+  "format_version": 2,
+  "template_version": "0.4.1",
+  "owner": "template-owned",
+  "files": [
+    {
+      "path": ".agents/AGENT_PROMPT.md",
+      "owner": "template-owned",
+      "sha256": "623e229a8838d4f025d7fa683958b6f8fc2e52656aa1def42f6612d1030b8e3c"
+    },
+    {
+      "path": ".agents/README.md",
+      "owner": "template-owned",
+      "sha256": "29ca7dd5d6c12152e561645650611fed7394ab3b1a8c0a802c47bbec558e52ef"
+    },
+    {
+      "path": ".agents/bin/spec_validate.py",
+      "owner": "template-owned",
+      "sha256": "e5c9387955857dcf391fc5c4bc435f3ea1479c2802d6f770077d16aa41107106"
+    },
+    {
+      "path": ".agents/bin/speckit_cli.py",
+      "owner": "template-owned",
+      "sha256": "311c8fc8450d141774f5cf977564ad9d93c231878bf7fe65f7629c0024002a19"
+    },
+    {
+      "path": ".agents/examples/001-archive-specs/README.md",
+      "owner": "template-owned",
+      "sha256": "5fb35fced9bf23ad04491e9a79895615f1ecf34de4bcda7f576dfc0fe1fa043c"
+    },
+    {
+      "path": ".agents/examples/001-archive-specs/brief.md",
+      "owner": "template-owned",
+      "sha256": "0c8c6a0ebee796912f7e51caa29e4377e1dcd8d7e9791164e03fbcc9b54e3789"
+    },
+    {
+      "path": ".agents/examples/001-archive-specs/evidence.md",
+      "owner": "template-owned",
+      "sha256": "25843395aeabe1bd89baa1e042fced7c033db5f92919dd3e920af1c471616c18"
+    },
+    {
+      "path": ".agents/examples/001-archive-specs/retro.md",
+      "owner": "template-owned",
+      "sha256": "06d413b05bdbaf6f5ae6486fcebbaeecf9a6fd4556e2c2c6c9cf5a60776b422b"
+    },
+    {
+      "path": ".agents/examples/001-archive-specs/spec.md",
+      "owner": "template-owned",
+      "sha256": "94a60156b9639f44614e131dcb5aed7dac9dc4c5f85ec043767e2c96b27b4b9f"
+    },
+    {
+      "path": ".agents/examples/001-archive-specs/state.json",
+      "owner": "template-owned",
+      "sha256": "591f9c8b4528dff0cfb332ca51dc95ff5ec1e069fb0372390f3dbc9a350b9998"
+    },
+    {
+      "path": ".agents/examples/001-archive-specs/tasks.md",
+      "owner": "template-owned",
+      "sha256": "44863e5ca7a3b1c6079dbcb226ca3c22376085ed41aa47b5917ab787e7b985f5"
+    },
+    {
+      "path": ".agents/examples/history/README.md",
+      "owner": "template-owned",
+      "sha256": "e7b2e1285a8e0c9022f1552861eb82fd3731daa3b5a3eb580d11bb08ff23054d"
+    },
+    {
+      "path": ".agents/examples/spec-state.awaiting-approval.example.json",
+      "owner": "template-owned",
+      "sha256": "a8c79f42d2f9c9982cd14ffefa80fee72194100a7b577b803569a02cdb859b70"
+    },
+    {
+      "path": ".agents/examples/spec-state.blocked.example.json",
+      "owner": "template-owned",
+      "sha256": "ec4d85a3a842aade9f5ed320650118d18edb650b302b9ae7e26dddec76789bbf"
+    },
+    {
+      "path": ".agents/examples/spec-state.completed.example.json",
+      "owner": "template-owned",
+      "sha256": "bfedcb968b41a1deaa254b3f806a88b0c42d5f7d9b1159f8f6c4215ba9428f26"
+    },
+    {
+      "path": ".agents/examples/spec-state.in-progress.example.json",
+      "owner": "template-owned",
+      "sha256": "f88f41a957f2a816af1755daa70825fa65fd5cd74ff05a4be08c162b901624da"
+    },
+    {
+      "path": ".agents/examples/spec-state.planning.example.json",
+      "owner": "template-owned",
+      "sha256": "5bf00352ea63e3a674973b47657e796eb6cfb3f7bf18e18968f520d16c81f178"
+    },
+    {
+      "path": ".agents/examples/spec-state.ready.example.json",
+      "owner": "template-owned",
+      "sha256": "218fd062da7bd538045956709493fbaed22d39e38c63cad2a8380573b1f905dd"
+    },
+    {
+      "path": ".agents/project.json",
+      "owner": "project-owned",
+      "sha256": "fc486804c96dff094fb20ef289a974cbc6b7d7a7874a5ed340d0d5aa7406e1c0"
+    },
+    {
+      "path": ".agents/requirements-dev.txt",
+      "owner": "template-owned",
+      "sha256": "d34f80e8f1e17c283fba92d5bd2d1b0abd4f5e6d63a9aef9f167b7d79a102068"
+    },
+    {
+      "path": ".agents/roles/architect.md",
+      "owner": "template-owned",
+      "sha256": "c31c6f2431794163fc16f9ce678be7bb9cc769874cc6a0a1b16f75920e513f74"
+    },
+    {
+      "path": ".agents/roles/business-analyst.md",
+      "owner": "template-owned",
+      "sha256": "b2de2dcae404196d5d585d9c722bc2d8864ef614ec9d8466e605a07ecc33f358"
+    },
+    {
+      "path": ".agents/roles/implementer.md",
+      "owner": "template-owned",
+      "sha256": "6ace7f8535960e4799a4263581aa1cdd790ae4032ede8227dc7caa0b53dc980b"
+    },
+    {
+      "path": ".agents/roles/orchestrator.md",
+      "owner": "template-owned",
+      "sha256": "c0e3c7a97987e43c6e60d26fd07ed4a6d5546e07cb5232bac073795189cc280d"
+    },
+    {
+      "path": ".agents/roles/reviewer.md",
+      "owner": "template-owned",
+      "sha256": "ada9becd2f5069a35669a8e588dc8961c8caef698a03cf0a8b8ef0cb17b41d55"
+    },
+    {
+      "path": ".agents/rules/backend-security.md",
+      "owner": "template-owned",
+      "sha256": "5e5a7bf35f70fdc0b4323280ac71e4c09794218c6768f8060a40443f5595b251"
+    },
+    {
+      "path": ".agents/rules/core-constitution.md",
+      "owner": "template-owned",
+      "sha256": "3647512c10027543b8517c9838191c044a4628553cf12390063fb2886cc1b1a6"
+    },
+    {
+      "path": ".agents/rules/framework-stack.md",
+      "owner": "template-owned",
+      "sha256": "35ca2ed2d13703ac0b60e27bfe8282c31463c64d24c98411d9fabb5eb1aa53e5"
+    },
+    {
+      "path": ".agents/rules/intake-orchestration.md",
+      "owner": "template-owned",
+      "sha256": "14289f600094347dd17a5c49c491c21b14ddcf83b24439745e134bdcddbeec60"
+    },
+    {
+      "path": ".agents/rules/optional/backend-cloud-rules.md",
+      "owner": "template-owned",
+      "sha256": "04c55824a760fcf17862f4aa4c372be5020e7c5f2a9b76d761a4ee5fbc841ba4"
+    },
+    {
+      "path": ".agents/rules/optional/memory-context-rules.md",
+      "owner": "template-owned",
+      "sha256": "f102d8d719b58d1c99831a9ec93babab2d0f1fde703ce6296729ca8ca2d3ded1"
+    },
+    {
+      "path": ".agents/rules/optional/ui-ux-design-rules.md",
+      "owner": "template-owned",
+      "sha256": "f8957417925b0f915c1ff3eeb9d868ec6c215b6e3c4aeda8bfce73b77c3e4559"
+    },
+    {
+      "path": ".agents/rules/progress-continuity.md",
+      "owner": "template-owned",
+      "sha256": "df6249ddb2eb572624f236982842868f332095c52fa879b0a3e274b7d70329a7"
+    },
+    {
+      "path": ".agents/rules/speckit-methodology.md",
+      "owner": "template-owned",
+      "sha256": "c4f22adb56ef210382571edc1d5a9929d3ddb08da601b3a7bd2d1539d855573f"
+    },
+    {
+      "path": ".agents/rules/testing-standards.md",
+      "owner": "template-owned",
+      "sha256": "958fc7c702f5d28d347fd8d4ae63a526e3eb93b569f067275767af86a8861ca8"
+    },
+    {
+      "path": ".agents/schemas/spec-state.schema.json",
+      "owner": "template-owned",
+      "sha256": "049f88ed729684b2d0f1b39eefc8507c38ab8ce2c71c92bccbf39802130d649f"
+    },
+    {
+      "path": ".agents/skills/sdd-implement/SKILL.md",
+      "owner": "template-owned",
+      "sha256": "a141383cce3000e3a1bf51c4be92b53ca4360954b99180703cff394e545cd85c"
+    },
+    {
+      "path": ".agents/skills/sdd-intake/SKILL.md",
+      "owner": "template-owned",
+      "sha256": "6f7d39db7d234f27496f624aa716cd77c0a52b8f8c3d4c49450abd91596a6486"
+    },
+    {
+      "path": ".agents/skills/sdd-plan/SKILL.md",
+      "owner": "template-owned",
+      "sha256": "d4dfff65844d3a02bdeb75c991ef307f72a916adb9f0f9665ec20eb3f15b066b"
+    },
+    {
+      "path": ".agents/skills/sdd-review/SKILL.md",
+      "owner": "template-owned",
+      "sha256": "06eb5f47ac6acda2998d1f57e3ade3f1a6b5bc2d4173d9062c5f2a2019014b96"
+    },
+    {
+      "path": ".agents/skills/sdd-specify/SKILL.md",
+      "owner": "template-owned",
+      "sha256": "7820c416f3c38b8a2b364c059dc4ecfa106d487282a0deee3fcdb21e2502cfe5"
+    },
+    {
+      "path": ".agents/templates/brief.md",
+      "owner": "template-owned",
+      "sha256": "826bd336c6aa31a49eca6a0c0fcb1398465d507a2312ebe3cc58589fcb713931"
+    },
+    {
+      "path": ".agents/templates/implementation-plan.md",
+      "owner": "template-owned",
+      "sha256": "146252aaa511075dd8f99664058a733cf9d49d5cb1c20dcc6ef3945fdd65f61d"
+    },
+    {
+      "path": ".agents/templates/retro.md",
+      "owner": "template-owned",
+      "sha256": "96103cbed0166e82e91b8149aa3ca74d208fa68ffafe359b8c492f4dc7e938fd"
+    },
+    {
+      "path": ".agents/templates/spec.md",
+      "owner": "template-owned",
+      "sha256": "b0e4fadbc584d111c0c0f90b128eb4c504e623732123f739aeb722f60e62001f"
+    },
+    {
+      "path": ".agents/templates/state.json",
+      "owner": "template-owned",
+      "sha256": "eb0d9c6ae941e81c03b0cc6e8a8422facaa0cfcf758e24e089008501aab07fde"
+    },
+    {
+      "path": ".agents/templates/tasks.md",
+      "owner": "template-owned",
+      "sha256": "d39b5f350f1918d3a01d6acd4a706ed742bd5bfe034db7a6aef434883b7027e6"
+    },
+    {
+      "path": ".agents/templates/test-plan.md",
+      "owner": "template-owned",
+      "sha256": "66d42a6d6f84d22030620ba234bb1aebefdf56f394f33c5aa733f8518d725939"
+    },
+    {
+      "path": ".agents/tests/test_repo_contract.py",
+      "owner": "template-owned",
+      "sha256": "b7b8594ae765a26d64db8eae74b1f3bb81c785e9034c17f11778cfaba9cf3c50"
+    },
+    {
+      "path": ".agents/tests/test_spec_validate.py",
+      "owner": "template-owned",
+      "sha256": "7571c138f120fea62512183eca3cf21c6ad5e9d68ef52c2756998f0efa863703"
+    },
+    {
+      "path": ".agents/tests/test_speckit_cli.py",
+      "owner": "template-owned",
+      "sha256": "a88ba80b0772109939d975d0335ea48706563fa02950729186bfd57933166db0"
+    },
+    {
+      "path": ".agents/tests/test_template_smoke.py",
+      "owner": "template-owned",
+      "sha256": "4d4ca046800f629724103c64b5dd52e30c55a54e7ce638235888e797c0f0ea4f"
+    },
+    {
+      "path": ".agents/version.json",
+      "owner": "template-owned",
+      "sha256": "0c0844485e8919ef713e411b77afafc50afe921098400c27fa1c2f0e1a0ed877"
+    },
+    {
+      "path": ".env.example",
+      "owner": "project-owned",
+      "sha256": "f36f3b81672e4ade74c0e59c3d7717ed94849b272eb1694a91ac45a038454e85"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/spec.yml",
+      "owner": "template-owned",
+      "sha256": "e9b89d15dc2006bc2cb67d400be006e071a2e3cee6adb1504707f68e04bd27fb"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "owner": "template-owned",
+      "sha256": "f012583b15dfc27a66779cf760044645c4596f2aa9b93a0fe9e804d11323b5d7"
+    },
+    {
+      "path": ".github/workflows/spec-from-issue.yml",
+      "owner": "template-owned",
+      "sha256": "4e6e2133938d8b3675e2211dfc0aa8092674dd8c01bc6ca73d22de56feaa223d"
+    },
+    {
+      "path": ".gitignore",
+      "owner": "project-owned",
+      "sha256": "4ec045a850a9a240e8dea5c5e7c659e1af1fc7350f5d6b3df517649a7ff14db5"
+    },
+    {
+      "path": "AGENTS.md",
+      "owner": "template-owned",
+      "sha256": "dedc291d66c004d8d18389136bd988019c86bd97e925aa4ca0f209ebc9e74f17"
+    },
+    {
+      "path": "CLAUDE.md",
+      "owner": "template-owned",
+      "sha256": "bad94b21072ff283156cc37868971e3252066931f9d1420fc99d1fd4853cc873"
+    },
+    {
+      "path": "README.md",
+      "owner": "project-owned",
+      "sha256": "a0afa4cfe06b575c62de11f9f425809a6b54a89e3284ebe6ff068dd14f341e08"
+    },
+    {
+      "path": "speckit",
+      "owner": "template-owned",
+      "sha256": "8d481588de999ef4acefbabbe6179b7df3558a08e0692c31111bcfae127f21b3"
+    }
+  ]
+}

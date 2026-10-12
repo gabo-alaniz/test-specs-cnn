@@ -1,0 +1,25 @@
+{
+  "schema_version": 3,
+  "created_at": null,
+  "events": [],
+  "spec_name": "001-example-feature",
+  "size": "M",
+  "status": "completed",
+  "phase": "validation",
+  "current_task": null,
+  "blocked_reason": null,
+  "approval": {
+    "by": "product-owner",
+    "at": "2026-10-01T12:00:00Z",
+    "design_hashes": {
+      "spec_md": "0000000000000000000000000000000000000000000000000000000000000000",
+      "implementation_plan_md": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "artifacts": {
+    "spec_md": true,
+    "implementation_plan_md": true,
+    "tasks_md": true,
+    "test_plan_md": true
+  }
+}

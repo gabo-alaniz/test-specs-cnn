@@ -1,0 +1,24 @@
+{
+  "schema_version": 3,
+  "created_at": null,
+  "events": [],
+  "spec_name": "001-archive-specs",
+  "size": "S",
+  "status": "completed",
+  "phase": "validation",
+  "current_task": null,
+  "blocked_reason": null,
+  "approval": {
+    "by": "maintainer",
+    "at": "2026-10-01T09:55:00Z",
+    "design_hashes": {
+      "spec_md": "94a60156b9639f44614e131dcb5aed7dac9dc4c5f85ec043767e2c96b27b4b9f"
+    }
+  },
+  "artifacts": {
+    "spec_md": true,
+    "implementation_plan_md": false,
+    "tasks_md": true,
+    "test_plan_md": false
+  }
+}

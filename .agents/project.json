@@ -1,0 +1,9 @@
+{
+  "$comment": "Checks globales del proyecto (AGENTS.md §K). 'speckit close' ejecuta test (obligatorio), lint, build y e2e configurados; 'task done' usa los comandos de los escenarios del spec.",
+  "commands": {
+    "test": ".venv/bin/python -m unittest discover -s .agents/tests -v",
+    "lint": "",
+    "build": "",
+    "e2e": ""
+  }
+}

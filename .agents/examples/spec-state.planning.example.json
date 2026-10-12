@@ -1,0 +1,18 @@
+{
+  "schema_version": 3,
+  "created_at": null,
+  "events": [],
+  "spec_name": "001-example-feature",
+  "size": "M",
+  "status": "planning",
+  "phase": "spec",
+  "current_task": null,
+  "blocked_reason": null,
+  "approval": null,
+  "artifacts": {
+    "spec_md": false,
+    "implementation_plan_md": false,
+    "tasks_md": false,
+    "test_plan_md": false
+  }
+}
