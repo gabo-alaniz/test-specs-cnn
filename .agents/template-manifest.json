@@ -1,6 +1,6 @@
 {
   "format_version": 2,
-  "template_version": "0.4.1",
+  "template_version": "0.4.2",
   "owner": "template-owned",
   "files": [
     {
@@ -11,7 +11,7 @@
     {
       "path": ".agents/README.md",
       "owner": "template-owned",
-      "sha256": "93357ccf523ccf861c7514703fcd19e7b797d9b6bc7b5092a462b50298473457"
+      "sha256": "7284a0c2f86579748b4cf96979417130875ba367d48ec9c2b4047f55f61567d2"
     },
     {
       "path": ".agents/bin/spec_validate.py",
@@ -111,7 +111,7 @@
     {
       "path": ".agents/roles/business-analyst.md",
       "owner": "template-owned",
-      "sha256": "b2de2dcae404196d5d585d9c722bc2d8864ef614ec9d8466e605a07ecc33f358"
+      "sha256": "15b5a8ff6e98f6b3f574edfac8d1d848071ec96b1b7f7b880433e9ace9dc1ad4"
     },
     {
       "path": ".agents/roles/implementer.md",
@@ -146,7 +146,7 @@
     {
       "path": ".agents/rules/intake-orchestration.md",
       "owner": "template-owned",
-      "sha256": "14289f600094347dd17a5c49c491c21b14ddcf83b24439745e134bdcddbeec60"
+      "sha256": "8cf939e52f35aa3b3c1968d0174e9261d106641b7cd10920bf22688ae25443ed"
     },
     {
       "path": ".agents/rules/optional/backend-cloud-rules.md",
@@ -191,7 +191,7 @@
     {
       "path": ".agents/skills/sdd-intake/SKILL.md",
       "owner": "template-owned",
-      "sha256": "6f7d39db7d234f27496f624aa716cd77c0a52b8f8c3d4c49450abd91596a6486"
+      "sha256": "1c34d40f0f2dc35420eaf039525f24e7e6ed6f3de6dae2e4db10efa1e3925cec"
     },
     {
       "path": ".agents/skills/sdd-plan/SKILL.md",
@@ -246,7 +246,7 @@
     {
       "path": ".agents/tests/test_repo_contract.py",
       "owner": "template-owned",
-      "sha256": "89026941f3d525ec31f59e9f07ab431f077977093c699da7bc86a1becbe2d6ce"
+      "sha256": "358db00b022da79b0e791ded649cc8cf5947eade70e307a81aad47bfcd4091ba"
     },
     {
       "path": ".agents/tests/test_spec_validate.py",
@@ -266,7 +266,7 @@
     {
       "path": ".agents/version.json",
       "owner": "template-owned",
-      "sha256": "0c0844485e8919ef713e411b77afafc50afe921098400c27fa1c2f0e1a0ed877"
+      "sha256": "113743c2a45c1a7040061a7fc406a8197023d1ced95e5d1dd0778cb862a324a5"
     },
     {
       "path": ".env.example",

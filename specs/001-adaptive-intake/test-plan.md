@@ -1,0 +1,20 @@
+# Test Plan 001: intake adaptativo y vía rápida
+
+> Solo size M. Necesita al menos un escenario por cada criterio AC-NNN del spec.
+
+| ID | AC | Escenario | Tipo (unit / integration / e2e / manual) | Comando o pasos |
+|----|----|-----------|------------------------------------------|-----------------|
+| TC-001 | AC-001 | El contrato exige exactamente una `Pregunta N/20` por turno y espera la respuesta | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_guided_mode_is_sequential -v` |
+| TC-002 | AC-002 | El contrato adapta la siguiente pregunta y prohíbe repetir o agrupar preguntas independientes | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_guided_mode_adapts_to_answers -v` |
+| TC-003 | AC-003 | La respuesta 20 con alcance insuficiente detiene el intake y devuelve la idea para redefinición | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_guided_mode_stops_at_twenty_when_unclear -v` |
+| TC-004 | AC-004 | La respuesta 20 con alcance suficiente presenta el brief sin una pregunta 21 | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_guided_mode_finishes_at_twenty_when_clear -v` |
+| TC-005 | AC-003 | Recorrido del límite con alcance insuficiente | manual | Revisar la secuencia `Pregunta 20/20` → detener entrevista → pedir redefinir o dividir → no hacer handoff a architect. |
+| TC-006 | AC-004 | Recorrido del límite con alcance suficiente | manual | Revisar la secuencia `Pregunta 20/20` → normalizar brief → pedir confirmación sin formular otra pregunta de entrevista. |
+| TC-007 | AC-004 | Los hashes del template permanecen coherentes tras cambiar el contrato guided | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_speckit_cli.TemplateLifecycleTestCase.test_template_manifest_hashes_match_the_seed -v` |
+| TC-008 | AC-005 | Una solicitud elegible se clasifica antes de crear un spec y anuncia la vía rápida | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_precedes_spec_creation -v` |
+| TC-009 | AC-006 | Cualquier criterio incumplido o exclusión obliga al flujo SDD normal | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_exclusions_require_sdd -v` |
+| TC-010 | AC-007 | El usuario puede forzar SDD antes de que el agente modifique archivos | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_allows_user_override -v` |
+| TC-011 | AC-008 | La vía rápida conserva seguridad, permisos, stack, Git, pruebas y reporte de evidencia | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_preserves_safeguards -v` |
+| TC-012 | AC-005 | Recorrido de una solicitud leve elegible | manual | Evaluar el ejemplo de un script local de inicio/parada: anunciar vía rápida antes de `speckit new` y comprobar que no se crea ni modifica `specs/`. |
+| TC-013 | AC-007 | Recorrido del override del usuario | manual | Tras anunciar vía rápida, simular que el usuario exige SDD y comprobar que el siguiente paso es elegir modo de intake sin modificar archivos. |
+| TC-014 | AC-008 | Los hashes y la versión del template permanecen coherentes tras completar la vía rápida | unit | `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_speckit_cli.TemplateLifecycleTestCase.test_template_manifest_hashes_match_the_seed test_speckit_cli.TemplateLifecycleTestCase.test_version_is_reported_from_canonical_metadata -v` |

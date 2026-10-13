@@ -1,0 +1,68 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-10-13T21:44:48Z",
+  "events": [
+    {
+      "event": "created",
+      "at": "2026-10-13T21:44:48Z",
+      "task": null,
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "design_ready",
+      "at": "2026-10-13T21:51:39Z",
+      "task": null,
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "approved",
+      "at": "2026-10-13T22:23:12Z",
+      "task": null,
+      "actor": "usuario",
+      "reason": null
+    },
+    {
+      "event": "ready",
+      "at": "2026-10-13T22:24:16Z",
+      "task": null,
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_started",
+      "at": "2026-10-13T22:24:31Z",
+      "task": "TASK-001",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_passed",
+      "at": "2026-10-13T22:25:56Z",
+      "task": "TASK-001",
+      "actor": null,
+      "reason": null
+    }
+  ],
+  "spec_name": "001-adaptive-intake",
+  "size": "M",
+  "status": "in_progress",
+  "phase": "implementation",
+  "current_task": null,
+  "blocked_reason": null,
+  "approval": {
+    "by": "usuario",
+    "at": "2026-10-13T22:23:12Z",
+    "design_hashes": {
+      "spec_md": "6a5a83319c31771a441ba5fc7ecfb2ed22ae0e39bc2c3237c53a56d6bc05ec44",
+      "implementation_plan_md": "448b0a2e8371e6a041e2f7434694162997b6c69306b7dafe636aec0deb8763d9"
+    }
+  },
+  "artifacts": {
+    "spec_md": true,
+    "implementation_plan_md": true,
+    "tasks_md": true,
+    "test_plan_md": true
+  }
+}

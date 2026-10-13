@@ -17,8 +17,12 @@ antes de obtener esa elección.
 
 ## 2. MODO GUIDED
 
-`business-analyst` hace una sola ronda consolidada de preguntas, adaptada al lenguaje del
-usuario, que cubre como mínimo:
+`business-analyst` conduce una entrevista secuencial y adaptativa. En cada turno formula exactamente
+una pregunta de intake, la identifica como `Pregunta N/20` y espera la respuesta antes de elegir la
+siguiente. No agrupa preguntas independientes para eludir el límite; puede incluir opciones o un
+ejemplo dentro de la única pregunta cuando reduzcan la carga cognitiva.
+
+Con las respuestas acumuladas cubre, solo cuando aplique y sin repetir información ya resuelta:
 
 1. perfil y personas afectadas;
 2. problema y proceso actual;
@@ -29,7 +33,15 @@ usuario, que cubre como mínimo:
 7. sensibilidad de los datos;
 8. restricciones, riesgos y exclusiones.
 
-Después normaliza las respuestas en `brief.md`. No conserva la conversación como transcripción.
+Después de cada respuesta comprueba si ya puede normalizar el brief y puede terminar la entrevista
+antes del límite. Tras la respuesta a `Pregunta 20/20` no formula otra pregunta de entrevista:
+
+- si el alcance ya está claro, normaliza las respuestas en `brief.md` y lo presenta para revisión;
+- si aún falta una decisión que impide delimitar el resultado, detiene el intake, no inicia diseño y
+  pide redefinir o dividir la idea.
+
+La solicitud final de confirmar el brief no cuenta como pregunta de entrevista. El agente no
+conserva la conversación como transcripción.
 
 ## 3. MODO PROPOSAL
 

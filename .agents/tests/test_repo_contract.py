@@ -122,15 +122,44 @@ class IntakeOrchestrationContractTestCase(unittest.TestCase):
         self.assertIn("No se inicia `sdd-specify`", rule)
         self.assertIn("No elijas por el usuario", skill)
 
-    def test_guided_mode_contract(self):
+    def test_guided_mode_is_sequential(self):
         rule = self.read(".agents/rules/intake-orchestration.md")
         skill = self.read(".agents/skills/sdd-intake/SKILL.md")
+        role = self.read(".agents/roles/business-analyst.md")
         brief = self.read(".agents/templates/brief.md")
-        self.assertIn("una sola ronda consolidada", rule)
+        for content in (rule, skill, role):
+            self.assertIn("Pregunta N/20", content)
+        self.assertRegex(rule, r"exactamente\s+una pregunta de intake")
+        self.assertIn("espera la respuesta", skill)
         for section in ("Proceso actual", "Resultado esperado", "Reglas de negocio y fuentes",
                         "Permisos y sensibilidad"):
             self.assertIn(section, brief)
+
+    def test_guided_mode_adapts_to_answers(self):
+        rule = self.read(".agents/rules/intake-orchestration.md")
+        skill = self.read(".agents/skills/sdd-intake/SKILL.md")
+        role = self.read(".agents/roles/business-analyst.md")
+        self.assertIn("respuestas acumuladas", rule)
+        self.assertIn("sin repetir información ya resuelta", rule)
+        self.assertIn("no agrupes preguntas independientes", skill)
+        self.assertIn("sin repetir ni agrupar preguntas independientes", role)
         self.assertIn("Propón opciones o ejemplos", skill)
+
+    def test_guided_mode_stops_at_twenty_when_unclear(self):
+        rule = self.read(".agents/rules/intake-orchestration.md")
+        skill = self.read(".agents/skills/sdd-intake/SKILL.md")
+        self.assertIn("Pregunta 20/20", rule)
+        self.assertIn("detiene el intake, no inicia diseño", rule)
+        self.assertIn("pide redefinir o dividir la idea", rule)
+        self.assertIn("no hagas una pregunta 21", skill)
+
+    def test_guided_mode_finishes_at_twenty_when_clear(self):
+        rule = self.read(".agents/rules/intake-orchestration.md")
+        skill = self.read(".agents/skills/sdd-intake/SKILL.md")
+        self.assertIn("si el alcance ya está claro", rule)
+        self.assertIn("normaliza las respuestas en `brief.md`", rule)
+        self.assertIn("La solicitud final de confirmar el brief no cuenta", rule)
+        self.assertIn("La confirmación final del brief no incrementa", skill)
 
     def test_proposal_mode_contract(self):
         rule = self.read(".agents/rules/intake-orchestration.md")

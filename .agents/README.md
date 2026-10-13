@@ -75,7 +75,8 @@ Intake → Spec → Plan → Tasks → Test Plan → Implement → Validate → 
 El agente activo es el `orchestrator`, el único punto visible de coordinación. En una idea nueva te
 pide elegir uno de estos modos:
 
-- `guided`: `business-analyst` hace una entrevista consolidada en lenguaje de negocio.
+- `guided`: `business-analyst` hace una entrevista adaptativa de una `Pregunta N/20` por turno; si
+  al llegar a 20 el alcance no es claro, detiene el intake y pide redefinir o dividir la idea.
 - `proposal`: el facilitator propone un brief y separa hechos, supuestos y decisiones abiertas.
 
 Ambos terminan en el mismo `brief.md`. Tú corriges o confirmas ese brief; solo después pasa a
