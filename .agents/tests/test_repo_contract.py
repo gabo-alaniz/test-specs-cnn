@@ -129,6 +129,7 @@ class IntakeOrchestrationContractTestCase(unittest.TestCase):
         brief = self.read(".agents/templates/brief.md")
         for content in (rule, skill, role):
             self.assertIn("Pregunta N/20", content)
+            self.assertNotIn("entrevista consolidada", content)
         self.assertRegex(rule, r"exactamente\s+una pregunta de intake")
         self.assertIn("espera la respuesta", skill)
         for section in ("Proceso actual", "Resultado esperado", "Reglas de negocio y fuentes",
@@ -195,6 +196,51 @@ class IntakeOrchestrationContractTestCase(unittest.TestCase):
         self.assertIn("No repitas la entrevista de negocio", skill)
         self.assertIn("una sola ronda consolidada", skill)
         self.assertIn("brief legacy", skill)
+
+    def test_fast_path_precedes_spec_creation(self):
+        rule = self.read(".agents/rules/intake-orchestration.md")
+        orchestrator = self.read(".agents/roles/orchestrator.md")
+        agents = self.read("AGENTS.md")
+        prompt = self.read(".agents/AGENT_PROMPT.md")
+        self.assertIn("antes de ejecutar `speckit new`", rule)
+        self.assertIn("antes de crear un spec o pedir modo", orchestrator)
+        self.assertIn("Antes de crear un spec o pedir modo de intake", agents)
+        self.assertIn("clasifica primero la solicitud", prompt)
+        self.assertIn("no crea artefactos en `specs/`", prompt)
+
+    def test_fast_path_exclusions_require_sdd(self):
+        rule = self.read(".agents/rules/intake-orchestration.md")
+        agents = self.read("AGENTS.md")
+        for exclusion in ("comportamiento funcional público", "APIs o contratos", "datos o schemas",
+                          "autenticación o permisos", "seguridad", "dependencias", "arquitectura",
+                          "infraestructura compartida", "CI/CD", "gobernanza"):
+            self.assertIn(exclusion, rule)
+            self.assertIn(exclusion, agents)
+        self.assertIn("Ante duda", rule)
+        self.assertIn("flujo completo es obligatorio", agents)
+
+    def test_fast_path_allows_user_override(self):
+        rule = self.read(".agents/rules/intake-orchestration.md")
+        agents = self.read("AGENTS.md")
+        orchestrator = self.read(".agents/roles/orchestrator.md")
+        self.assertIn("antes de modificar", rule)
+        self.assertIn("El usuario puede exigir el flujo SDD normal", rule)
+        self.assertIn("el usuario puede exigir SDD", agents)
+        self.assertIn("permites que el usuario exija SDD", orchestrator)
+
+    def test_fast_path_preserves_safeguards(self):
+        rule = self.read(".agents/rules/intake-orchestration.md")
+        continuity = self.read(".agents/rules/progress-continuity.md")
+        methodology = self.read(".agents/rules/speckit-methodology.md")
+        cli_source = self.read(".agents/bin/speckit_cli.py")
+        for safeguard in ("seguridad", "permisos", "stack", "Git", "testing"):
+            self.assertIn(safeguard, rule)
+            self.assertIn(safeguard, methodology)
+        self.assertIn("no crea\nni modifica un directorio en `specs/`", rule)
+        self.assertIn("reporta los archivos modificados", continuity)
+        self.assertRegex(continuity, r"comandos\s+realmente ejecutados")
+        self.assertIn("QUICK_BRANCH", cli_source)
+        self.assertIn("quick branch cannot change specs/", cli_source)
 
     def test_role_ownership_and_single_agent_fallback(self):
         rule = self.read(".agents/rules/intake-orchestration.md")

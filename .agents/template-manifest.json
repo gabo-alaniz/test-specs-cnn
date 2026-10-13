@@ -6,12 +6,12 @@
     {
       "path": ".agents/AGENT_PROMPT.md",
       "owner": "template-owned",
-      "sha256": "721365beeaa0350e4359bae90e16470aafec7d3709a0b21b23d097e9280125f5"
+      "sha256": "396335b70ba1d05084fc17783b49451dbf8c761eceaa5dfb392d051989bef508"
     },
     {
       "path": ".agents/README.md",
       "owner": "template-owned",
-      "sha256": "7284a0c2f86579748b4cf96979417130875ba367d48ec9c2b4047f55f61567d2"
+      "sha256": "26d23f3f4f6810c92833e74451edc78da9787db5dc58ed4d8d28e10c94f4adc6"
     },
     {
       "path": ".agents/bin/spec_validate.py",
@@ -21,7 +21,7 @@
     {
       "path": ".agents/bin/speckit_cli.py",
       "owner": "template-owned",
-      "sha256": "311c8fc8450d141774f5cf977564ad9d93c231878bf7fe65f7629c0024002a19"
+      "sha256": "92ab8f149d030d5ee7f714226e2ca29733e46ce17d61308d215d96e58a863ccb"
     },
     {
       "path": ".agents/examples/001-archive-specs/README.md",
@@ -121,7 +121,7 @@
     {
       "path": ".agents/roles/orchestrator.md",
       "owner": "template-owned",
-      "sha256": "c0e3c7a97987e43c6e60d26fd07ed4a6d5546e07cb5232bac073795189cc280d"
+      "sha256": "8eaeb77cf8fab1647ae4902680b7f3c3206f66fb22cf89c148e329102f9fbfdd"
     },
     {
       "path": ".agents/roles/reviewer.md",
@@ -136,7 +136,7 @@
     {
       "path": ".agents/rules/core-constitution.md",
       "owner": "template-owned",
-      "sha256": "3647512c10027543b8517c9838191c044a4628553cf12390063fb2886cc1b1a6"
+      "sha256": "ab31144e68d2e544053c083442aeef49cc50ccab163633f60f238a764e70ce55"
     },
     {
       "path": ".agents/rules/framework-stack.md",
@@ -146,7 +146,7 @@
     {
       "path": ".agents/rules/intake-orchestration.md",
       "owner": "template-owned",
-      "sha256": "8cf939e52f35aa3b3c1968d0174e9261d106641b7cd10920bf22688ae25443ed"
+      "sha256": "0a7a7f84df6e3c221478b3d6f2a25486d53c544121c26ef77ae901cfdc37d3f5"
     },
     {
       "path": ".agents/rules/optional/backend-cloud-rules.md",
@@ -166,12 +166,12 @@
     {
       "path": ".agents/rules/progress-continuity.md",
       "owner": "template-owned",
-      "sha256": "df6249ddb2eb572624f236982842868f332095c52fa879b0a3e274b7d70329a7"
+      "sha256": "f220d0f9a7177f49217eda49ba16fedc065c031be687517a8a6b62b01ee4c6da"
     },
     {
       "path": ".agents/rules/speckit-methodology.md",
       "owner": "template-owned",
-      "sha256": "c4f22adb56ef210382571edc1d5a9929d3ddb08da601b3a7bd2d1539d855573f"
+      "sha256": "9ef6fe940682309ae2ea647597a013f3560cf46357c312632d37926df72b2f46"
     },
     {
       "path": ".agents/rules/testing-standards.md",
@@ -191,7 +191,7 @@
     {
       "path": ".agents/skills/sdd-intake/SKILL.md",
       "owner": "template-owned",
-      "sha256": "1c34d40f0f2dc35420eaf039525f24e7e6ed6f3de6dae2e4db10efa1e3925cec"
+      "sha256": "2e4890350147d58d9f4aac4b1fe9a20ce986ac27dbf04a385259219a18145259"
     },
     {
       "path": ".agents/skills/sdd-plan/SKILL.md",
@@ -246,7 +246,7 @@
     {
       "path": ".agents/tests/test_repo_contract.py",
       "owner": "template-owned",
-      "sha256": "358db00b022da79b0e791ded649cc8cf5947eade70e307a81aad47bfcd4091ba"
+      "sha256": "52f8ef23813f7c41f7bae917d7ff3aa069d84aa588f21bba66c19cf01788f66a"
     },
     {
       "path": ".agents/tests/test_spec_validate.py",
@@ -256,7 +256,7 @@
     {
       "path": ".agents/tests/test_speckit_cli.py",
       "owner": "template-owned",
-      "sha256": "a88ba80b0772109939d975d0335ea48706563fa02950729186bfd57933166db0"
+      "sha256": "be71468cafcd519ff906c2583eb6cbc1bba3610f35ba09809755fd8a1dcfbd42"
     },
     {
       "path": ".agents/tests/test_template_smoke.py",
@@ -296,7 +296,7 @@
     {
       "path": "AGENTS.md",
       "owner": "template-owned",
-      "sha256": "dedc291d66c004d8d18389136bd988019c86bd97e925aa4ca0f209ebc9e74f17"
+      "sha256": "ea8859895701bf1524eae31a6252a67c0fe4b41309e9d81ed9e8c6861880b4db"
     },
     {
       "path": "CLAUDE.md",
@@ -311,7 +311,7 @@
     {
       "path": "speckit",
       "owner": "template-owned",
-      "sha256": "8d481588de999ef4acefbabbe6179b7df3558a08e0692c31111bcfae127f21b3"
+      "sha256": "bcbd43d891ba36d921ccdb58dd83801ea3577fcb2d8ffa2b55dcff501cec90a8"
     }
   ]
 }

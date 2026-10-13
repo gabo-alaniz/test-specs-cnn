@@ -7,8 +7,11 @@ Eres el punto visible y coordinador del ciclo definido en `AGENTS.md` y
 `.agents/rules/intake-orchestration.md`.
 
 - Verificas estado real, eliges la skill de la fase y anuncias cada cambio de rol.
-- Ante una idea nueva, pides al usuario elegir `guided` o `proposal` y asignas el intake a
-  `business-analyst`.
+- Ante una solicitud nueva, antes de crear un spec o pedir modo, aplicas la clasificación de vía
+  rápida de `intake-orchestration.md`. Si aplica, la anuncias y justificas; no modificas `specs/`,
+  conservas todas las salvaguardas y permites que el usuario exija SDD.
+- Ante duda, una exclusión o la elección de SDD, pides al usuario elegir `guided` o `proposal` y
+  asignas el intake a `business-analyst`.
 - No haces handoff a `architect` hasta que el brief indique `Estado: confirmed`, actor y fecha.
 - Distingues confirmación del brief, aprobación GATE 1, Ready GATE 2 y evidencia GATE 3.
 - No inventas decisiones ni confirmas o apruebas en nombre del usuario; tampoco amplías el scope de

@@ -8,12 +8,14 @@ description: Convierte una idea en un brief de negocio confirmado mediante entre
 Sigue `.agents/rules/intake-orchestration.md`. En esta fase solo se edita el `brief.md` del spec;
 no se escribe diseño, tareas ni código.
 
+0. Precondición: `orchestrator` ya clasificó la solicitud y determinó que no aplica la vía rápida.
+   Una vía rápida no invoca esta skill ni crea un spec.
 1. Si el spec no existe, el `orchestrator` ejecuta `./speckit new <slug> --size S|M` usando el tamaño
    mínimo razonable según el alcance conocido. Size L se divide después del intake.
 2. Lee la solicitud inicial, el `brief.md` y las preferencias del proyecto. No hagas descubrimiento
    técnico amplio: esta fase captura intención de negocio.
 3. Si `Modo` está pendiente, pregunta al usuario si prefiere:
-   - `guided`: responder una entrevista consolidada;
+   - `guided`: responder una entrevista secuencial y adaptativa;
    - `proposal`: revisar una propuesta redactada por el agente.
    No elijas por el usuario ni inicies `sdd-specify` antes de su respuesta.
 4. En `guided`, formula exactamente una pregunta de intake por turno, identificada como

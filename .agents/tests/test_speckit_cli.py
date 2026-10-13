@@ -488,7 +488,7 @@ Ninguna.
 
         result = cli.ci_guard("feat/001-login", base)
         self.assertEqual((result["spec"], result["fingerprint"]), ("001-login", fingerprint))
-        with self.assertRaisesRegex(cli.CliError, "feat/<NNN-slug>"):
+        with self.assertRaisesRegex(cli.CliError, "feat/<NNN-slug> or quick/<slug>"):
             cli.ci_guard("feature/001-login", base)
 
         (self.root / "src.txt").write_text("changed after close\n", encoding="utf-8")
@@ -504,6 +504,35 @@ Ninguna.
         git("commit", "-qm", "unrelated spec")
         with self.assertRaisesRegex(cli.CliError, "unrelated spec 002-other"):
             cli.ci_guard("feat/001-login", base)
+
+    def test_ci_guard_accepts_quick_branch_without_spec(self):
+        git = lambda *args: subprocess.run(  # noqa: E731
+            ["git", "-c", "user.name=t", "-c", "user.email=t@t", *args], cwd=self.root,
+            check=True, capture_output=True, text=True,
+        ).stdout.strip()
+        git("init", "-q", "-b", "main")
+        git("add", ".")
+        git("commit", "-qm", "base")
+        base = git("rev-parse", "HEAD")
+        git("switch", "-qc", "quick/start-stop-script")
+
+        script = self.root / "run.sh"
+        script.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+        script.chmod(0o755)
+        git("add", "run.sh")
+        git("commit", "-qm", "chore: add run script")
+
+        result = cli.ci_guard("quick/start-stop-script", base)
+        self.assertEqual(result["spec"], "quick:start-stop-script")
+        self.assertEqual(result["fingerprint"], cli.change_fingerprint("", base))
+
+        spec = self.root / "specs" / "001-unrelated" / "spec.md"
+        spec.parent.mkdir(parents=True)
+        spec.write_text("not allowed on quick branch\n", encoding="utf-8")
+        git("add", ".")
+        git("commit", "-qm", "invalid spec change")
+        with self.assertRaisesRegex(cli.CliError, "quick branch cannot change specs/"):
+            cli.ci_guard("quick/start-stop-script", base)
 
     def test_change_fingerprint_matches_dirty_and_committed_git_modes(self):
         git = lambda *args: subprocess.run(  # noqa: E731

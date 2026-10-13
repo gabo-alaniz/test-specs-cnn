@@ -1,15 +1,17 @@
 # SPECKIT METHODOLOGY
-# Propósito: Protocolo obligatorio de diseño antes de programar.
-# Ningún código se escribe sin los artefactos de Speckit completos.
+# Propósito: Protocolo obligatorio de diseño antes de programar una solicitud clasificada como SDD.
+# La vía rápida válida queda fuera de Speckit, pero no de seguridad, permisos ni validación.
 
 ## PRINCIPIO
 
-Speckit impone una cascada de diseño que separa el *qué* del *cómo* del *cuándo*.
-El agente no inicia implementación sin evidencia de que cada fase anterior está completa.
+Speckit impone una cascada de diseño que separa el *qué* del *cómo* del *cuándo* para toda solicitud
+clasificada como SDD. Solo una vía rápida válida según `intake-orchestration.md` queda fuera de esta
+cascada; no crea artefactos Speckit, pero conserva seguridad, permisos, stack, Git y testing.
 
 ## 0. INTAKE, BRIEF Y TAMAÑO
 
-- El agente activo actúa como `orchestrator`; el usuario elige `guided` o `proposal` según
+- El agente activo actúa como `orchestrator` y clasifica la solicitud antes de crear un spec. Solo si
+  no aplica la vía rápida, el usuario elige `guided` o `proposal` según
   `.agents/rules/intake-orchestration.md`.
 - `business-analyst` sigue `sdd-intake`, normaliza la idea en
   `specs/<id>-<nombre>/brief.md` y solicita confirmación explícita.
@@ -126,6 +128,7 @@ Al cerrar un spec → `./speckit close <spec>` y completar `retro.md`; las prefe
 
 ## REGLA FINAL
 
-> Spec → Plan → Tasks → Test Plan → Implement → Validate → Document.
+> Tras clasificar como SDD: Spec → Plan → Tasks → Test Plan → Implement → Validate → Document.
 
-No se escribe código sin los artefactos que exige su tamaño. El `state.json` refleja siempre la realidad, no las intenciones.
+En SDD no se escribe código sin los artefactos que exige su tamaño. El `state.json` refleja siempre
+la realidad, no las intenciones. La vía rápida no crea `state.json` ni artefactos en `specs/`.

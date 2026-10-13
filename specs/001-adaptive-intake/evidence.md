@@ -82,3 +82,101 @@ Ran 1 test in 0.004s
 
 OK
 ```
+
+## TASK-002 — PASS — 2026-10-13T22:33:26Z
+- Commit: d446b95a283c348c4dce9afb9566d8f28a6a0682
+- Tested content: b3c0e850a0bbf40d9dac1df002efd30a6a0f3047663fa496c8c139f2af505a58 (dirty)
+### TC-008 — PASS
+- Type: `unit`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_precedes_spec_creation -v`
+- Exit: 0 (0.047s)
+
+```text
+test_fast_path_precedes_spec_creation (test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_precedes_spec_creation) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+```
+
+### TC-009 — PASS
+- Type: `unit`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_exclusions_require_sdd -v`
+- Exit: 0 (0.045s)
+
+```text
+test_fast_path_exclusions_require_sdd (test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_exclusions_require_sdd) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+```
+
+### TC-010 — PASS
+- Type: `unit`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_allows_user_override -v`
+- Exit: 0 (0.051s)
+
+```text
+test_fast_path_allows_user_override (test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_allows_user_override) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+```
+
+### TC-011 — PASS
+- Type: `unit`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_preserves_safeguards -v`
+- Exit: 0 (0.056s)
+
+```text
+test_fast_path_preserves_safeguards (test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_preserves_safeguards) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+```
+
+### TC-012 — PASS
+- Type: `manual`
+- Steps: Evaluar el ejemplo de un script local de inicio/parada: anunciar vía rápida antes de `speckit new` y comprobar que no se crea ni modifica `specs/`.
+- Evidence: Revisión 2026-10-13: el ejemplo de script local elegible anuncia vía rápida antes de speckit new, usa quick/<slug> y no toca specs/; si el usuario exige SDD, se detiene antes de modificar archivos y solicita elegir guided o proposal.
+
+### TC-013 — PASS
+- Type: `manual`
+- Steps: Tras anunciar vía rápida, simular que el usuario exige SDD y comprobar que el siguiente paso es elegir modo de intake sin modificar archivos.
+- Evidence: Revisión 2026-10-13: el ejemplo de script local elegible anuncia vía rápida antes de speckit new, usa quick/<slug> y no toca specs/; si el usuario exige SDD, se detiene antes de modificar archivos y solicita elegir guided o proposal.
+
+### TC-014 — PASS
+- Type: `unit`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_speckit_cli.TemplateLifecycleTestCase.test_template_manifest_hashes_match_the_seed test_speckit_cli.TemplateLifecycleTestCase.test_version_is_reported_from_canonical_metadata -v`
+- Exit: 0 (0.128s)
+
+```text
+test_template_manifest_hashes_match_the_seed (test_speckit_cli.TemplateLifecycleTestCase.test_template_manifest_hashes_match_the_seed) ... ok
+test_version_is_reported_from_canonical_metadata (test_speckit_cli.TemplateLifecycleTestCase.test_version_is_reported_from_canonical_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.063s
+
+OK
+```
+
+### TC-015 — PASS
+- Type: `integration`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_speckit_cli.CliFlowTestCase.test_ci_guard_accepts_quick_branch_without_spec -v`
+- Exit: 0 (0.105s)
+
+```text
+test_ci_guard_accepts_quick_branch_without_spec (test_speckit_cli.CliFlowTestCase.test_ci_guard_accepts_quick_branch_without_spec) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.041s
+
+OK
+```

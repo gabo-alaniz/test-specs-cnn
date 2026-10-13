@@ -11,7 +11,7 @@ Speckit CLI — spec lifecycle on top of spec_validate.py (stdlib only).
     task start|done <spec> TASK-NNN  start a task / run its checks and record evidence
     resume <spec> --by <name> --reason <text>   authorize another attempt after blocking
     close <spec> [--base <ref>]      final checks, fingerprint, status=completed and retro.md
-    ci-guard --branch ... [--base ...] [--head ...]   link branch, diff, spec and CLOSE evidence
+    ci-guard --branch ... [--base ...] [--head ...]   verify an SDD spec/CLOSE or a quick diff
     handoff [<spec>] [--note "..."]  session summary to .agents/SESSION_STATE.md
     archive <spec>                   move a completed spec to specs/.archive/
     report [--json]                  creation-to-close, gate, task, FAIL and block history metrics
@@ -45,6 +45,7 @@ MAX_ATTEMPTS = 3  # AGENTS.md §F: retry budget per failing task
 SLUG = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 SPEC_DIR_NAME = re.compile(r"^(\d{3,})-")
 FEATURE_BRANCH = re.compile(r"^feat/(\d{3,}-[a-z0-9]+(?:-[a-z0-9]+)*)$")
+QUICK_BRANCH = re.compile(r"^quick/([a-z0-9]+(?:-[a-z0-9]+)*)$")
 TAIL_LINES = 20
 EVIDENCE_ENTRY = re.compile(r"^##\s+(TASK-\d+|CLOSE)\s+[-—]\s+(PASS|FAIL)\s+[-—]\s+(\S+)", re.MULTILINE)
 CI_FINGERPRINT = re.compile(r"^- CI fingerprint:\s*([a-f0-9]{64})\s*$", re.MULTILINE)
@@ -436,14 +437,22 @@ def close_fingerprint(spec_dir: Path) -> str | None:
 
 def ci_guard(branch: str, base: str, head: str = "HEAD", include_worktree: bool = False) -> dict[str, str]:
     branch_match = FEATURE_BRANCH.fullmatch(branch)
-    if not branch_match:
-        raise CliError("CI branch must match exactly feat/<NNN-slug>")
-    spec_name = branch_match.group(1)
-    spec_dir = resolve_ci_spec(spec_name)
+    quick_match = QUICK_BRANCH.fullmatch(branch)
+    if not branch_match and not quick_match:
+        raise CliError("CI branch must match exactly feat/<NNN-slug> or quick/<slug>")
     resolved_base = resolve_change_base(base, head)
     if resolved_base is None:
         raise CliError("cannot resolve the integration base; pass --base <commit>")
     paths = _changed_paths(resolved_base, head, include_worktree)
+    if quick_match:
+        spec_paths = sorted(path for path in paths if _spec_artifact_path(path))
+        if spec_paths:
+            raise CliError(f"quick branch cannot change specs/: {spec_paths[0]}")
+        fingerprint = change_fingerprint("", resolved_base, head, include_worktree)
+        return {"branch": branch, "spec": f"quick:{quick_match.group(1)}", "base": resolved_base,
+                "head": head, "fingerprint": fingerprint}
+    spec_name = branch_match.group(1)
+    spec_dir = resolve_ci_spec(spec_name)
     for path in sorted(paths):
         spec_path = _spec_artifact_path(path)
         if not spec_path or spec_path[0] == spec_name:
