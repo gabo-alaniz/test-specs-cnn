@@ -2,14 +2,35 @@
 
 # Propósito: Convertir una idea en un brief de negocio confirmado antes de iniciar el diseño SDD.
 
-## 1. ENTRADA ÚNICA
+## 1. CLASIFICACIÓN PREVIA Y ENTRADA ÚNICA
 
 El agente activo actúa como `orchestrator` y es el único punto visible para el usuario. Ante una
 idea nueva, primero comprueba si existe un `brief.md` con intake confirmado.
 
+Si no existe un brief confirmado, antes de ejecutar `speckit new`, crear archivos en `specs/` o pedir
+elegir modo, clasifica la solicitud. La **vía rápida** solo aplica cuando el cambio cumple a la vez
+todos estos criterios:
+
+1. es pequeño y de alcance claro;
+2. está localizado;
+3. es reversible;
+4. tiene bajo riesgo;
+5. se puede verificar con checks existentes.
+
+No aplica si altera comportamiento funcional público, APIs o contratos, datos o schemas,
+autenticación o permisos, seguridad, dependencias, arquitectura, infraestructura compartida, CI/CD
+o gobernanza. Ante duda, cualquier exclusión o una petición del usuario, se usa SDD.
+
+Cuando aplica, el `orchestrator` anuncia `vía rápida` y una justificación concisa antes de modificar
+archivos. El usuario puede exigir el flujo SDD normal. Si mantiene la vía rápida, el agente no crea
+ni modifica un directorio en `specs/`; implementa dentro del alcance solicitado, conserva seguridad,
+permisos, stack, Git y testing, y entrega la lista de archivos y las validaciones realmente
+ejecutadas. Si necesita una rama usa `quick/<slug>` y no inventa un Task ID. No invoca `sdd-intake`
+ni gates SDD.
+
 Si no hay modo elegido, pregunta únicamente cuál prefiere el usuario:
 
-- `guided`: `business-analyst` conduce una entrevista de negocio consolidada.
+- `guided`: `business-analyst` conduce una entrevista de negocio secuencial y adaptativa.
 - `proposal`: `business-analyst` redacta una propuesta para que el usuario la corrija.
 
 No se inicia `sdd-specify`, no se escribe `spec.md` y no se decide el modo en nombre del usuario
@@ -17,8 +38,12 @@ antes de obtener esa elección.
 
 ## 2. MODO GUIDED
 
-`business-analyst` hace una sola ronda consolidada de preguntas, adaptada al lenguaje del
-usuario, que cubre como mínimo:
+`business-analyst` conduce una entrevista secuencial y adaptativa. En cada turno formula exactamente
+una pregunta de intake, la identifica como `Pregunta N/20` y espera la respuesta antes de elegir la
+siguiente. No agrupa preguntas independientes para eludir el límite; puede incluir opciones o un
+ejemplo dentro de la única pregunta cuando reduzcan la carga cognitiva.
+
+Con las respuestas acumuladas cubre, solo cuando aplique y sin repetir información ya resuelta:
 
 1. perfil y personas afectadas;
 2. problema y proceso actual;
@@ -29,7 +54,15 @@ usuario, que cubre como mínimo:
 7. sensibilidad de los datos;
 8. restricciones, riesgos y exclusiones.
 
-Después normaliza las respuestas en `brief.md`. No conserva la conversación como transcripción.
+Después de cada respuesta comprueba si ya puede normalizar el brief y puede terminar la entrevista
+antes del límite. Tras la respuesta a `Pregunta 20/20` no formula otra pregunta de entrevista:
+
+- si el alcance ya está claro, normaliza las respuestas en `brief.md` y lo presenta para revisión;
+- si aún falta una decisión que impide delimitar el resultado, detiene el intake, no inicia diseño y
+  pide redefinir o dividir la idea.
+
+La solicitud final de confirmar el brief no cuenta como pregunta de entrevista. El agente no
+conserva la conversación como transcripción.
 
 ## 3. MODO PROPOSAL
 
@@ -97,7 +130,8 @@ automáticamente. Cuando la sección existe, `sdd-specify` exige `Estado: confir
 Secuencia canónica:
 
 ```text
-usuario → orchestrator → business-analyst → confirmación del brief
+usuario → orchestrator → vía rápida → implementación acotada → validación y reporte
+                      ↘ business-analyst → confirmación del brief
         → architect → aprobación GATE 1 → Ready GATE 2
         → implementer → evidencia GATE 3 → reviewer → cierre
 ```
@@ -116,4 +150,4 @@ la autoridad del rol que coordina ni sustituye las decisiones humanas.
 
 ## REGLA FINAL
 
-> Elegir modo → facilitar intake → confirmar brief → diseñar → aprobar → planificar → implementar → revisar.
+> Clasificar → vía rápida o elegir modo → facilitar intake → confirmar brief → diseñar → aprobar → planificar → implementar → revisar.

@@ -72,11 +72,18 @@ proyecto/
 Intake → Spec → Plan → Tasks → Test Plan → Implement → Validate → Document
 ```
 
-El agente activo es el `orchestrator`, el único punto visible de coordinación. En una idea nueva te
-pide elegir uno de estos modos:
+El agente activo es el `orchestrator`, el único punto visible de coordinación. Ante una solicitud
+nueva, primero evalúa si aplica la **vía rápida**: un ajuste pequeño, localizado, reversible, de bajo
+riesgo, verificable con checks existentes y sin impacto en comportamiento público, contratos, datos,
+seguridad, dependencias, arquitectura, infraestructura compartida, CI/CD o gobernanza. La anuncia
+antes de actuar, no crea `specs/`, conserva permisos y validaciones, usa `quick/<slug>` si necesita
+rama y puedes exigir SDD normal.
 
-- `guided`: `business-analyst` hace una entrevista consolidada en lenguaje de negocio.
-- `proposal`: el facilitator propone un brief y separa hechos, supuestos y decisiones abiertas.
+Cuando la vía rápida no aplica, te pide elegir uno de estos modos:
+
+- `guided`: `business-analyst` hace una entrevista adaptativa de una `Pregunta N/20` por turno; si
+  al llegar a 20 el alcance no es claro, detiene el intake y pide redefinir o dividir la idea.
+- `proposal`: `business-analyst` propone un brief y separa hechos, supuestos y decisiones abiertas.
 
 Ambos terminan en el mismo `brief.md`. Tú corriges o confirmas ese brief; solo después pasa a
 `architect`. Confirmar el brief no aprueba el diseño: `spec.md` y el plan todavía requieren GATE 1.
@@ -124,7 +131,8 @@ Formato de tareas: `- [ ] TASK-001: descripción (AC-001)` (`[/]` en progreso, `
 ./speckit task done 001 TASK-001        # GATE 3: escenarios dirigidos + evidencia por TC
 ./speckit resume 001 --by x --reason y  # autoriza otro intento tras tres FAIL
 ./speckit close 001 [--base main]       # test/lint/build/e2e, fingerprint, completed y retro
-./speckit ci-guard --branch feat/001-login --base main  # rama + diff + spec + CLOSE
+./speckit ci-guard --branch feat/001-login --base main  # SDD: rama + diff + spec + CLOSE
+./speckit ci-guard --branch quick/start-script --base main  # vía rápida: diff sin specs/
 ./speckit handoff 001 --note "..."      # resumen de sesión → .agents/SESSION_STATE.md
 ./speckit archive 001                   # spec completed → specs/.archive/
 ./speckit migrate [001] [--check]       # migra estados al schema vigente
@@ -218,4 +226,4 @@ y elimina `"tools"` de `.agents/project.json`.
 
 ## ✅ CI
 
-`.github/workflows/ci.yml` usa `.venv`, prueba Python 3.9 y 3.13 con dependencias y con fallback stdlib, valida sintaxis, contratos, ejemplos y specs, y escanea secretos. Todas las Actions externas están fijadas a SHA completo. El workflow principal solo tiene `contents: read`; el job aislado de Issue→spec conserva los permisos de escritura mínimos y serializa globalmente la asignación de IDs con reintentos sin force-push.
+`.github/workflows/ci.yml` usa `.venv`, prueba Python 3.9 y 3.13 con dependencias y con fallback stdlib, valida sintaxis, contratos, ejemplos y specs, y escanea secretos. `ci-guard` exige spec y huella de CLOSE en `feat/<spec>`; en `quick/<slug>` conserva la huella del diff y rechaza cambios en `specs/`. Todas las Actions externas están fijadas a SHA completo. El workflow principal solo tiene `contents: read`; el job aislado de Issue→spec conserva los permisos de escritura mínimos y serializa globalmente la asignación de IDs con reintentos sin force-push.

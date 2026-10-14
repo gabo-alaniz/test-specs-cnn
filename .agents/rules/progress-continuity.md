@@ -10,9 +10,21 @@
 
 ---
 
+## 0. VÍA RÁPIDA
+
+La clasificación ocurre antes de este ciclo, según `intake-orchestration.md`. Una vía rápida válida
+no tiene `state.json`, tasks ni gates y no crea o modifica `specs/`. Antes de entregarla, el agente
+ejecuta los checks proporcionales disponibles y reporta los archivos modificados, los comandos
+realmente ejecutados y cualquier validación pendiente. Sin evidencia reportable no afirma que el
+cambio funciona.
+
+Las secciones siguientes aplican a solicitudes clasificadas como SDD.
+
+---
+
 ## 1. INICIO DE SESIÓN — PROTOCOLO DE RECUPERACIÓN
 
-**ANTES de escribir cualquier código en una sesión nueva**, el agente ejecuta este protocolo:
+**ANTES de escribir código de un spec en una sesión nueva**, el agente ejecuta este protocolo:
 
 ```
 ① Leer state.json del Spec activo

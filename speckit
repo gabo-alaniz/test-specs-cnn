@@ -11,7 +11,7 @@
 #   ./speckit task start|done <spec> TASK-NNN   ejecución / GATE 3 (evidence.md)
 #   ./speckit resume <spec> --by <nombre> --reason <motivo>   autoriza reintento tras bloqueo
 #   ./speckit close <spec> [--base <ref>]   checks globales, fingerprint, completed y retro
-#   ./speckit ci-guard --branch feat/<spec>  valida rama, diff, spec y CLOSE probado
+#   ./speckit ci-guard --branch feat/<spec>|quick/<slug>  valida SDD o vía rápida sin spec
 #   ./speckit handoff [<spec>] [--note ".."]  resumen en .agents/SESSION_STATE.md
 #   ./speckit archive <spec>                mueve un spec completed a specs/.archive/
 #   ./speckit report [--json]               métricas de gates, tareas, FAIL y bloqueos

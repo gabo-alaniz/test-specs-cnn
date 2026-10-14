@@ -6,7 +6,7 @@ Esta es la fuente única de instrucciones para cualquier agente (Claude Code, Co
 
 ## A. Integridad
 - Si un requerimiento es ambiguo o está incompleto, pregunta antes de escribir código. No inventes requisitos, flujos ni "mejoras" no pedidas.
-- Trabaja solo dentro del alcance del spec activo.
+- Trabaja solo dentro del alcance del spec activo o de la solicitud clasificada explícitamente como vía rápida.
 - Si dos reglas entran en conflicto, aplica la precedencia de `.agents/rules/core-constitution.md`. Si son del mismo nivel, señálalo y espera una decisión.
 
 ## B. Contexto
@@ -21,7 +21,9 @@ Esta es la fuente única de instrucciones para cualquier agente (Claude Code, Co
 ## D. Flujo SDD
 `Intake → Spec → Plan → Tasks → Test Plan → Implement → Validate → Document`
 
-0. El agente activo es `orchestrator`. Ante una idea nueva, el usuario elige `guided` o `proposal` y `business-analyst` sigue `sdd-intake` para normalizar `brief.md`. Solo tras la confirmación explícita del brief hace handoff a `architect`; esta confirmación no es GATE 1. Véase `.agents/rules/intake-orchestration.md`.
+0. El agente activo es `orchestrator`. Antes de crear un spec o pedir modo de intake para una solicitud nueva, aplica la clasificación de `.agents/rules/intake-orchestration.md`:
+   - **Vía rápida:** solo cuando el cambio es a la vez pequeño, localizado, reversible, de bajo riesgo, verificable con checks existentes y no afecta comportamiento funcional público, APIs o contratos, datos o schemas, autenticación o permisos, seguridad, dependencias, arquitectura, infraestructura compartida, CI/CD ni gobernanza. El agente anuncia `vía rápida` y el motivo antes de actuar; el usuario puede exigir SDD. No se crean artefactos en `specs/`, pero siguen vigentes seguridad, permisos, stack, Git y testing, y la entrega reporta archivos y validaciones reales.
+   - **SDD:** ante cualquier exclusión, duda o petición del usuario, este flujo completo es obligatorio. El usuario elige `guided` o `proposal` y `business-analyst` sigue `sdd-intake` para normalizar `brief.md`. Solo tras la confirmación explícita del brief hace handoff a `architect`; esta confirmación no es GATE 1.
 1. Cada spec vive en `specs/<NNN>-<nombre>/` y se crea con `./speckit new <nombre> --size S|M` (o desde un issue con el formulario «Nueva spec»). `architect` convierte el brief confirmado en diseño; no repite el intake y agrupa en una sola ronda solo las aclaraciones técnicas bloqueantes.
 2. Elige el tamaño en `state.json.size`:
 
@@ -55,7 +57,7 @@ Esta es la fuente única de instrucciones para cualquier agente (Claude Code, Co
 | Después del cierre | Completa `retro.md`; `archive <spec>` valida cierre y retro antes de mover a `specs/.archive/` |
 | Migrar estados | `migrate [<spec>] [--check]` actualiza `state.json` al schema vigente |
 | Métricas | `report [--json]`: creación→cierre, duración por gate, tareas, `FAIL` y bloqueos históricos |
-| CI | `ci-guard --branch feat/<spec> [--base <ref>]` vincula rama, diff, spec y fingerprint de CLOSE |
+| CI | `ci-guard --branch feat/<spec>|quick/<slug> [--base <ref>]` vincula SDD con spec/CLOSE o la vía rápida con su diff sin `specs/` |
 
 - `status` muestra el estado de todos los specs y `validate` el detalle. Si falla, corrige el spec antes de seguir.
 - Skills con cada fase: `sdd-intake`, `sdd-specify`, `sdd-plan`, `sdd-implement`, `sdd-review`. Son Markdown en `.agents/skills/<nombre>/SKILL.md`: cuando el usuario pida una fase, lee y sigue el `SKILL.md` correspondiente (las herramientas que detectan `.agents/skills/` las ofrecen además como comando).
@@ -81,7 +83,7 @@ Esta es la fuente única de instrucciones para cualquier agente (Claude Code, Co
 - No termines una sesión con `./speckit validate --all` en rojo.
 - No crees configuración propia de una herramienta (`.claude/`, `.codex/`, `.opencode/`, `.cursor/`…) en el repo; las preferencias locales de cada persona no se versionan.
 - No instales ni declares dependencias sin la aprobación del usuario.
-- Trabaja en la rama `feat/<NNN>-<nombre>` y usa Conventional Commits con el Task ID (`feat(TASK-014): ...`). No hagas commits directos a `main`.
+- En SDD trabaja en `feat/<NNN>-<nombre>` y usa Conventional Commits con el Task ID (`feat(TASK-014): ...`). En vía rápida usa `quick/<slug>` y Conventional Commits sin inventar Task ID. No hagas commits directos a `main`.
 
 ## H. Código
 - Tipado end-to-end: nada de `any`, `@ts-ignore` ni `# type: ignore` sin justificar.

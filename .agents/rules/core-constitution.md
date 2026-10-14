@@ -43,6 +43,14 @@ Los repos hijo añaden sus propias reglas en `.agents/rules/` (ej. `stack-<tecno
 
 ## 3. FLUJO CANÓNICO DE IMPLEMENTACIÓN
 
+Antes de entrar al flujo, `orchestrator` clasifica la solicitud según
+`intake-orchestration.md`. Una solicitud que cumple todos los criterios de vía rápida y ninguna
+exclusión queda fuera del ciclo SDD: el agente anuncia la clasificación, permite que el usuario exija
+SDD, implementa el cambio acotado y reporta archivos y validaciones reales. La vía rápida no elimina
+seguridad, permisos, reglas de stack, Git ni testing.
+
+Para cualquier solicitud no elegible, dudosa o dirigida por el usuario a SDD, el flujo canónico es:
+
 ```
 ① Verificar estado de sesión: leer state.json + tasks.md (progress-continuity.md §1)
 ② Descubrimiento dirigido: MCP si existe, si no búsqueda local (AGENTS.md §B)
@@ -57,7 +65,7 @@ Los repos hijo añaden sus propias reglas en `.agents/rules/` (ej. `stack-<tecno
 ⑪ Ejecutar `./speckit handoff` al cerrar (progress-continuity.md §5)
 ```
 
-Ninguna fase puede omitirse ni darse por completada sin evidencia.
+Una vez seleccionada la ruta SDD, ninguna fase puede omitirse ni darse por completada sin evidencia.
 La evidencia es el único criterio válido para avanzar entre fases.
 
 ## 4. SEÑAL DE ALERTA: CONFLICTO DE REGLAS
@@ -74,6 +82,7 @@ Si el agente detecta que una decisión viola una regla de nivel superior:
 
 ## REGLA FINAL
 
-> Spec → Plan → Tasks → Test Plan → Implement → Validate → Document.
+> Clasificar → vía rápida verificable o Spec → Plan → Tasks → Test Plan → Implement → Validate → Document.
 
-Ningún paso puede omitirse. La evidencia es obligatoria para avanzar.
+En SDD ningún paso puede omitirse. En vía rápida la validación proporcional y su reporte siguen
+siendo obligatorios.
