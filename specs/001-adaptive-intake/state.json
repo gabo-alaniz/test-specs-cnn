@@ -71,11 +71,18 @@
       "task": "TASK-003",
       "actor": null,
       "reason": null
+    },
+    {
+      "event": "closed",
+      "at": "2026-10-14T16:52:12Z",
+      "task": null,
+      "actor": null,
+      "reason": null
     }
   ],
   "spec_name": "001-adaptive-intake",
   "size": "M",
-  "status": "in_progress",
+  "status": "completed",
   "phase": "validation",
   "current_task": null,
   "blocked_reason": null,

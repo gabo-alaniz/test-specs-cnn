@@ -240,3 +240,33 @@ Ran 1 test in 0.003s
 
 OK
 ```
+
+## CLOSE — PASS — 2026-10-14T16:52:12Z
+- Commit: c204199e95a5fff6c5ba56e542aefc2b8db61484
+- Tested content: a738b026bd7d8025286672eb8d003cfc675dbb60 (clean)
+- CI base: f06973d85a9800384d9b1bb6657331f3204ed4d3
+- CI fingerprint: 1854d7f38fbc49edd1a961c883b72c5355b71740ad6bda54660c6c6dade3f7aa
+- test: `.venv/bin/python -m unittest discover -s .agents/tests -v` → exit 0 (4.746s)
+
+```text
+test_reference_spec_is_valid (test_speckit_cli.TemplateLifecycleTestCase.test_reference_spec_is_valid) ... ok
+test_template_manifest_hashes_match_the_seed (test_speckit_cli.TemplateLifecycleTestCase.test_template_manifest_hashes_match_the_seed) ... ok
+test_update_manifest_rejects_traversal (test_speckit_cli.TemplateLifecycleTestCase.test_update_manifest_rejects_traversal) ... ok
+test_update_never_modifies_project_owned_paths (test_speckit_cli.TemplateLifecycleTestCase.test_update_never_modifies_project_owned_paths) ... ok
+test_update_previews_conflicts_backs_up_and_restores (test_speckit_cli.TemplateLifecycleTestCase.test_update_previews_conflicts_backs_up_and_restores) ... ok
+test_update_rejects_symlink_escapes (test_speckit_cli.TemplateLifecycleTestCase.test_update_rejects_symlink_escapes) ... ok
+test_update_removes_retired_template_content_and_preserves_memory (test_speckit_cli.TemplateLifecycleTestCase.test_update_removes_retired_template_content_and_preserves_memory) ... ok
+test_update_rolls_back_all_paths_and_propagates_original_exception (test_speckit_cli.TemplateLifecycleTestCase.test_update_rolls_back_all_paths_and_propagates_original_exception) ... ok
+test_version_is_reported_from_canonical_metadata (test_speckit_cli.TemplateLifecycleTestCase.test_version_is_reported_from_canonical_metadata) ... ok
+test_1_layout_has_no_tool_specific_config (test_template_smoke.TemplateSmokeTestCase.test_1_layout_has_no_tool_specific_config) ... ok
+test_2_every_instruction_reference_resolves (test_template_smoke.TemplateSmokeTestCase.test_2_every_instruction_reference_resolves) ... ok
+test_3_cli_and_doctor_are_green (test_template_smoke.TemplateSmokeTestCase.test_3_cli_and_doctor_are_green) ... ok
+test_4_full_sdd_cycle_through_the_launcher (test_template_smoke.TemplateSmokeTestCase.test_4_full_sdd_cycle_through_the_launcher) ... ok
+test_5_size_s_cycle_uses_embedded_tests_through_the_launcher (test_template_smoke.TemplateSmokeTestCase.test_5_size_s_cycle_uses_embedded_tests_through_the_launcher) ... ok
+test_6_codex_sandbox_can_run_shell_in_the_child (test_template_smoke.TemplateSmokeTestCase.test_6_codex_sandbox_can_run_shell_in_the_child) ... ok
+
+----------------------------------------------------------------------
+Ran 107 tests in 4.670s
+
+OK
+```
