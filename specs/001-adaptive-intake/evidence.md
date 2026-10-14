@@ -180,3 +180,63 @@ Ran 1 test in 0.041s
 
 OK
 ```
+
+## TASK-003 — PASS — 2026-10-14T16:51:53Z
+- Commit: b073f17fdefba80f4c8134b31fda47f43df3d120
+- Tested content: 198bbcdabc07f28057be0dc5739e8380531b982cb1c5b1e5f296b931e102035d (dirty)
+### TC-011 — PASS
+- Type: `unit`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_preserves_safeguards -v`
+- Exit: 0 (0.052s)
+
+```text
+test_fast_path_preserves_safeguards (test_repo_contract.IntakeOrchestrationContractTestCase.test_fast_path_preserves_safeguards) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+```
+
+### TC-014 — PASS
+- Type: `unit`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_speckit_cli.TemplateLifecycleTestCase.test_template_manifest_hashes_match_the_seed test_speckit_cli.TemplateLifecycleTestCase.test_version_is_reported_from_canonical_metadata -v`
+- Exit: 0 (0.143s)
+
+```text
+test_template_manifest_hashes_match_the_seed (test_speckit_cli.TemplateLifecycleTestCase.test_template_manifest_hashes_match_the_seed) ... ok
+test_version_is_reported_from_canonical_metadata (test_speckit_cli.TemplateLifecycleTestCase.test_version_is_reported_from_canonical_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.067s
+
+OK
+```
+
+### TC-015 — PASS
+- Type: `integration`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_speckit_cli.CliFlowTestCase.test_ci_guard_accepts_quick_branch_without_spec -v`
+- Exit: 0 (0.103s)
+
+```text
+test_ci_guard_accepts_quick_branch_without_spec (test_speckit_cli.CliFlowTestCase.test_ci_guard_accepts_quick_branch_without_spec) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.047s
+
+OK
+```
+
+### TC-016 — PASS
+- Type: `unit`
+- Command: `PYTHONPATH=.agents/tests .venv/bin/python -S -m unittest test_repo_contract.DistributionLayoutTestCase.test_root_allowlist -v`
+- Exit: 0 (0.044s)
+
+```text
+test_root_allowlist (test_repo_contract.DistributionLayoutTestCase.test_root_allowlist) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+OK
+```

@@ -57,6 +57,20 @@
       "task": "TASK-002",
       "actor": null,
       "reason": null
+    },
+    {
+      "event": "task_started",
+      "at": "2026-10-14T16:51:37Z",
+      "task": "TASK-003",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_passed",
+      "at": "2026-10-14T16:51:53Z",
+      "task": "TASK-003",
+      "actor": null,
+      "reason": null
     }
   ],
   "spec_name": "001-adaptive-intake",

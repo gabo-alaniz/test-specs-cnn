@@ -24,8 +24,8 @@ class DistributionLayoutTestCase(unittest.TestCase):
 
     def test_root_allowlist(self):
         allowed = {
-            ".agents", ".env.example", ".github", ".gitignore", "AGENTS.md", "CLAUDE.md",
-            "README.md", "speckit", "specs",
+            ".agents", ".env.example", ".github", ".gitignore", "AGENT_PROMPT.md", "AGENTS.md",
+            "CLAUDE.md", "README.md", "speckit", "specs",
         }
         roots = {Path(path).parts[0] for path in self.tracked_files()}
         self.assertEqual(roots, allowed)

@@ -246,7 +246,7 @@
     {
       "path": ".agents/tests/test_repo_contract.py",
       "owner": "template-owned",
-      "sha256": "52f8ef23813f7c41f7bae917d7ff3aa069d84aa588f21bba66c19cf01788f66a"
+      "sha256": "9af94a983c45c8e18685f1eebeada0c0ebe4d2f433f9c5c80654dfd24233118f"
     },
     {
       "path": ".agents/tests/test_spec_validate.py",
