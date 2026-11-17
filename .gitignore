@@ -17,6 +17,7 @@
 # Dependencias y entornos
 node_modules/
 .venv/
+.venv
 venv/
 __pycache__/
 *.py[cod]
@@ -32,3 +33,6 @@ coverage/
 .DS_Store
 Thumbs.db
 .idea/
+
+# Datos descargados del notebook de ciencia de datos
+data-science/data/

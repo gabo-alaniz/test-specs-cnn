@@ -1,0 +1,117 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-11-17T19:51:51Z",
+  "events": [
+    {
+      "event": "created",
+      "at": "2026-11-17T19:51:51Z",
+      "task": null,
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "design_ready",
+      "at": "2026-11-17T19:56:24Z",
+      "task": null,
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "approved",
+      "at": "2026-11-17T19:58:16Z",
+      "task": null,
+      "actor": "gabo",
+      "reason": null
+    },
+    {
+      "event": "ready",
+      "at": "2026-11-17T19:58:17Z",
+      "task": null,
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_started",
+      "at": "2026-11-17T19:58:27Z",
+      "task": "TASK-001",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_passed",
+      "at": "2026-11-17T20:00:06Z",
+      "task": "TASK-001",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_started",
+      "at": "2026-11-17T20:00:22Z",
+      "task": "TASK-002",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_passed",
+      "at": "2026-11-17T20:01:06Z",
+      "task": "TASK-002",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_started",
+      "at": "2026-11-17T20:01:07Z",
+      "task": "TASK-003",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_passed",
+      "at": "2026-11-17T20:03:05Z",
+      "task": "TASK-003",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_started",
+      "at": "2026-11-17T20:03:06Z",
+      "task": "TASK-004",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_passed",
+      "at": "2026-11-17T20:05:08Z",
+      "task": "TASK-004",
+      "actor": null,
+      "reason": null
+    },
+    {
+      "event": "task_started",
+      "at": "2026-11-17T20:05:09Z",
+      "task": "TASK-005",
+      "actor": null,
+      "reason": null
+    }
+  ],
+  "spec_name": "002-clasificacion-flores",
+  "size": "M",
+  "status": "in_progress",
+  "phase": "implementation",
+  "current_task": "TASK-005",
+  "blocked_reason": null,
+  "approval": {
+    "by": "gabo",
+    "at": "2026-11-17T19:58:16Z",
+    "design_hashes": {
+      "spec_md": "6c7d4308389e24a3887155fe079a5b28bbc65160ebd9ebe0f73b0fd202b4097c",
+      "implementation_plan_md": "703e7e815008d9b12c058a3c8df3bb511783737bbaf5adfc972eda52b36cac7f"
+    }
+  },
+  "artifacts": {
+    "spec_md": true,
+    "implementation_plan_md": true,
+    "tasks_md": true,
+    "test_plan_md": true
+  }
+}
